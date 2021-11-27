@@ -1,0 +1,46 @@
+$players: (
+  windows95: (
+    gray: (
+      100: hsl(120, 3%, 100%),
+      200: hsl(0, 0%, 78%),
+      300: hsl(120, 3%, 38%),
+      400: hsl(0, 0%, 7%),
+    ),
+    green: (
+      100: hsl(120, 100%, 50%),
+    ),
+    blue: (
+      100: hsl(240, 100%, 50%),
+    ),
+  ),
+  modern: (
+    gray: (
+      200:
+        linear-gradient(
+          180deg,
+          #473421 0%,
+          #cfc6a9 23.31%,
+          #ffffdc 44.58%,
+          #d3caa6 66.65%,
+          #67543f 100%
+        ),
+      700:
+        linear-gradient(
+          180deg,
+          #181818 0%,
+          #252525 23.31%,
+          #555555 44.58%,
+          #222222 66.65%,
+          #000000 100%
+        ),
+      800: linear-gradient(136.13deg, #404040 -0.23%, #000000 24.77%),
+      900: hsl(252, 9%, 11%),
+    ),
+    yellow: (
+      50: linear-gradient(to bottom, hsl(43, 89%, 61%), hsl(61, 100%, 79%)),
+      100: linear-gradient(to bottom, hsl(48, 100%, 68%), hsl(38, 77%, 50%)),
+      200: linear-gradient(to bottom, hsl(47, 100%, 63%), hsl(35, 100%, 37%)),
+    ),
+  ),
+  retro: (),
+);

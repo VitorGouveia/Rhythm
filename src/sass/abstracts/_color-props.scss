@@ -1,0 +1,16 @@
+@use '../base/colors';
+
+:root {
+  @each $player, $colors in $players {
+    @each $color, $shades in $colors {
+      @each $shade, $value in $shades {
+        --color-#{$player}-#{$color}-#{$shade}: #{$value};
+      }
+    }
+    // @each $shade, $color in $player {
+    //   @each $shade, $value in $shade {
+    //     --color-#{$color}-#{$shade}: #{$value};
+    //   }
+    // }
+  }
+}
