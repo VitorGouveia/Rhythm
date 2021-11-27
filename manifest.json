@@ -1,0 +1,45 @@
+{
+  "author": "Vitor Gouveia",
+  "short_name": "Rhythm music player.",
+  "name": "Rhythm - Listen everywehre",
+  "description": "Rhythm, listen everywehre. Rhythm is a music player app that allows for you to import your own music.",
+  "start_url": ".",
+  "scope": "/",
+  "background_color": "#FB1435",
+  "display": "standalone",
+  "id": "/",
+  "orientation": "portrait-primary",
+  "theme_color": "#FB1435",
+  "icons": [
+    {
+      "src": "./assets/logo/dark/logo_512.svg",
+      "sizes": "512x512"
+    },
+    {
+      "src": "./assets/logo/dark/logo_384.svg",
+      "sizes": "384x384"
+    },
+    {
+      "src": "./assets/logo/dark/logo_256.svg",
+      "sizes": "256x256"
+    },
+    {
+      "src": "./assets/logo/dark/logo_96.svg",
+      "sizes": "96x96"
+    } 
+  ],
+  "shortcuts": [
+    {
+      "name": "Listen to a random song from our system.",
+      "short_name": "Listen a song.",
+      "description": "Listen to a random song from our music player platform.",
+      "url": "/",
+      "icons": [
+        {
+          "src": "./assets/play.svg",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ]
+}
