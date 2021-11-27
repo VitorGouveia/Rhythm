@@ -1,0 +1,40 @@
+@import '../mixins';
+
+.author {
+  color: var(--color-windows95-gray-100);
+  filter: opacity(0.8);
+
+  h6 {
+    font-size: useClamp(28);
+    font-weight: 400;
+
+    span {
+      color: red;
+    }
+
+    strong {
+      a {
+        background-image: linear-gradient(
+          to right,
+          var(--color-windows95-gray-100),
+          var(--color-windows95-gray-100)
+        );
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: 100% 2px;
+
+        padding: 0.2rem;
+        padding-top: 0.1rem;
+        border-radius: 4px;
+
+        transition: background 200ms, color 300ms;
+
+        &:hover,
+        &:focus {
+          color: var(--color-windows95-gray-400);
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+}
