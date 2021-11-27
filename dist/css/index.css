@@ -114,7 +114,7 @@ body[data-theme=retro] .player-container {
 }
 
 .windows-95-player {
-  max-width: 512px;
+  max-width: 612px;
   max-height: 326px;
   /* 54px */
   padding: clamp(0.85rem, 0.6326704545rem + 1.2878787879vw, 2.178125rem);
@@ -220,19 +220,19 @@ body[data-theme=retro] .player-container {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  column-gap: 0.4rem;
+  column-gap: 0.6rem;
 }
 
 .windows-95-player .music-info .content .bars .bar {
   cursor: pointer;
-  padding: 0.6rem 0.2rem;
+  padding: clamp(0.55rem, 0.409375rem + 0.8333333333vw, 1.409375rem) clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
   background: var(--color-windows95-blue-100);
   transition: background 300ms, padding 300ms;
 }
 
 .windows-95-player .music-info .content .bars .bar:hover, .windows-95-player .music-info .content .bars .bar:focus {
   background: var(--color-windows95-blue-50);
-  padding: 0.8rem 0.2rem;
+  padding: clamp(0.65rem, 0.4838068182rem + 0.9848484848vw, 1.665625rem) clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
 }
 
 .windows-95-player .music-info .background {
@@ -275,11 +275,52 @@ body[data-theme=retro] .player-container {
   margin: auto;
   z-index: 2;
   background: var(--color-windows95-gray-500);
-  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.windows-95-player .buttons .content button {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem) 0;
+  background: var(--color-windows95-gray-200);
+  border: 5px solid var(--color-windows95-gray-500);
+  position: relative;
+  overflow: hidden;
+}
+
+.windows-95-player .buttons .content button img {
+  width: 16px;
+  height: auto;
+}
+
+.windows-95-player .buttons .content button::before {
+  content: "";
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  padding: clamp(0.2rem, 0.1488636364rem + 0.303030303vw, 0.5125rem);
+  background: var(--color-windows95-gray-100);
+}
+
+.windows-95-player .buttons .content button::after {
+  content: "";
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  padding: clamp(0.2rem, 0.1488636364rem + 0.303030303vw, 0.5125rem);
+  background: var(--color-windows95-gray-300);
+}
+
+.windows-95-player .buttons .content button:hover, .windows-95-player .buttons .content button:focus {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #2d2e2f, #3e4041);
+  box-shadow: inset 0px 2.68313px 4.02469px rgba(0, 0, 0, 0.5);
+}
+
+.windows-95-player .buttons .content button:hover::before, .windows-95-player .buttons .content button:hover::after, .windows-95-player .buttons .content button:focus::before, .windows-95-player .buttons .content button:focus::after {
+  display: none;
 }
 
 .windows-95-player .buttons .background {

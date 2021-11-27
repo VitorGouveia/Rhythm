@@ -1,7 +1,7 @@
 @import '../../mixins';
 
 .windows-95-player {
-  max-width: 512px;
+  max-width: 612px;
   max-height: 326px;
 
   /* 54px */
@@ -96,12 +96,12 @@
         align-items: baseline;
         justify-content: space-between;
 
-        column-gap: 0.4rem;
+        column-gap: 0.6rem;
 
         .bar {
           cursor: pointer;
 
-          padding: 0.6rem 0.2rem;
+          padding: useClamp(22) useClamp(12);
           background: var(--color-windows95-blue-100);
 
           transition: background 300ms, padding 300ms;
@@ -110,7 +110,7 @@
           &:focus {
             background: var(--color-windows95-blue-50);
 
-            padding: 0.8rem 0.2rem;
+            padding: useClamp(26) useClamp(12);
           }
         }
       }
@@ -176,13 +176,69 @@
 
       background: var(--color-windows95-gray-500);
 
-      padding: useClamp(32);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
 
-      display: flex;
-      flex-direction: row;
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-      align-items: flex-start;
-      justify-content: space-between;
+        padding: useClamp(12) 0;
+
+        background: var(--color-windows95-gray-200);
+        border: 5px solid var(--color-windows95-gray-500);
+
+        img {
+          width: 16px;
+          height: auto;
+        }
+
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          width: 100vw;
+
+          position: absolute;
+          top: 0;
+
+          padding: useClamp(8);
+
+          background: var(--color-windows95-gray-100);
+        }
+
+        &::after {
+          content: '';
+          width: 100vw;
+
+          position: absolute;
+          bottom: 0;
+
+          padding: useClamp(8);
+
+          background: var(--color-windows95-gray-300);
+        }
+
+        &:hover,
+        &:focus {
+          cursor: pointer;
+
+          &::before,
+          &::after {
+            display: none;
+          }
+
+          background: linear-gradient(
+            to bottom,
+            hsl(200, 3%, 18%),
+            hsl(210, 2%, 25%)
+          );
+
+          box-shadow: inset 0px 2.68313px 4.02469px rgba(0, 0, 0, 0.5);
+        }
+      }
     }
 
     .background {
