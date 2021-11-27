@@ -123,7 +123,8 @@ body[data-theme=retro] .player-container {
   background: var(--color-windows95-gray-200);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1.5fr 1.5fr 1fr;
+  grid-template-rows: 40% 30% 30%;
+  row-gap: 1rem;
   grid-template-areas: "music-info" "buttons" "length";
 }
 
@@ -133,20 +134,67 @@ body[data-theme=retro] .player-container {
 }
 
 .windows-95-player .music-info .content {
-  width: 94%;
-  height: 80%;
+  width: 98%;
+  height: 90%;
   position: absolute;
   inset: 0;
   margin: auto;
   z-index: 2;
   background: var(--color-windows95-gray-500);
-  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
 }
 
+@media only screen and (min-width: 16.875rem) {
+  .windows-95-player .music-info .content {
+    padding: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
+  }
+
+  .windows-95-player .music-info .content h1 {
+    font-size: clamp(0.5rem, 0.3721590909rem + 0.7575757576vw, 1.28125rem);
+  }
+}
+@media only screen and (min-width: 48rem) {
+  .windows-95-player .music-info .content {
+    padding: clamp(0.5rem, 0.3721590909rem + 0.7575757576vw, 1.28125rem);
+  }
+
+  .windows-95-player .music-info .content h1 {
+    font-size: clamp(0.6rem, 0.4465909091rem + 0.9090909091vw, 1.5375rem);
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .windows-95-player .music-info .content {
+    padding: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
+  }
+
+  .windows-95-player .music-info .content h1 {
+    font-size: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+  }
+}
 .windows-95-player .music-info .content .description {
   display: flex;
   flex-direction: column;
@@ -156,7 +204,7 @@ body[data-theme=retro] .player-container {
 }
 
 .windows-95-player .music-info .content .description ::selection {
-  background: rgba(0, 255, 0, 0.2);
+  background: rgba(0, 255, 0, 0.3);
 }
 
 .windows-95-player .music-info .content .description h1 {
@@ -200,7 +248,7 @@ body[data-theme=retro] .player-container {
   height: 100%;
   position: absolute;
   left: 0;
-  clip-path: polygon(0 100%, 0 0, 100% 0, 97% 10%, 3% 10%, 3% 90%);
+  clip-path: polygon(0 100%, 0 0, 100% 0, 99% 5%, 1.2% 5%, 1.2% 99%);
   background: var(--color-windows95-gray-300);
 }
 
@@ -210,7 +258,54 @@ body[data-theme=retro] .player-container {
   height: 100%;
   position: absolute;
   right: 0;
-  clip-path: polygon(3% 90%, 97% 90%, 97% 10%, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(1.2% 95%, 99% 95%, 99% 5%, 100% 0, 100% 100%, 0 100%);
+  background: var(--color-windows95-gray-50);
+}
+
+.windows-95-player .buttons {
+  grid-area: buttons;
+  position: relative;
+}
+
+.windows-95-player .buttons .content {
+  width: 98%;
+  height: 90%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 2;
+  background: var(--color-windows95-gray-500);
+  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.windows-95-player .buttons .background {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.windows-95-player .buttons .background::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  clip-path: polygon(0 100%, 0 0, 100% 0, 99% 5%, 1.2% 5%, 1.2% 95%);
+  background: var(--color-windows95-gray-300);
+}
+
+.windows-95-player .buttons .background::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  clip-path: polygon(1.2% 95%, 99% 95%, 99% 5%, 100% 0, 100% 100%, 0 100%);
   background: var(--color-windows95-gray-50);
 }
 
@@ -224,8 +319,8 @@ body[data-theme=retro] .player-container {
 }
 
 .windows-95-player .length-container .meter {
-  width: 94%;
-  height: 60%;
+  width: 98%;
+  height: 80%;
   z-index: 2;
   position: absolute;
   inset: 0;
@@ -253,7 +348,7 @@ body[data-theme=retro] .player-container {
   height: 100%;
   position: absolute;
   left: 0;
-  clip-path: polygon(0 100%, 0 0, 100% 0, 97% 20%, 3% 20%, 3% 80%);
+  clip-path: polygon(0 100%, 0 0, 100% 0, 99% 8%, 1% 8%, 1% 90%);
   background: var(--color-windows95-gray-300);
 }
 
@@ -263,6 +358,6 @@ body[data-theme=retro] .player-container {
   height: 100%;
   position: absolute;
   right: 0;
-  clip-path: polygon(3% 80%, 97% 80%, 97% 20%, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(1% 90%, 99% 90%, 99% 8%, 100% 0, 100% 100%, 0 100%);
   background: var(--color-windows95-gray-50);
 }
