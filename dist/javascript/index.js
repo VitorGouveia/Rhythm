@@ -8,9 +8,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Theme } from './theme.js';
+const players = {
+    windows95: document.querySelector('.windows-95-player'),
+    modern: document.querySelector('.modern-player'),
+    retro: document.querySelector('.retro-player'),
+};
 document.addEventListener('DOMContentLoaded', () => {
     const localTheme = localStorage.getItem('theme');
     const theme = new Theme(localTheme);
+    switch (theme.theme) {
+        case 'windows95':
+            players.windows95.style.display = 'grid';
+            players.modern.style.display = 'none';
+            players.retro.style.display = 'none';
+            break;
+        case 'modern':
+            players.windows95.style.display = 'grid';
+            players.modern.style.display = 'none';
+            players.retro.style.display = 'none';
+            break;
+        case 'retro':
+            players.windows95.style.display = 'grid';
+            players.modern.style.display = 'none';
+            players.retro.style.display = 'none';
+            break;
+    }
     theme.cycle();
 });
 if ('serviceWorker' in navigator) {

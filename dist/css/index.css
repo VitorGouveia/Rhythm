@@ -28,10 +28,12 @@ textarea {
 }
 
 :root {
+  --color-windows95-gray-50: white;
   --color-windows95-gray-100: white;
   --color-windows95-gray-200: #c7c7c7;
   --color-windows95-gray-300: #5e645e;
   --color-windows95-gray-400: #121212;
+  --color-windows95-gray-500: black;
   --color-windows95-green-100: lime;
   --color-windows95-blue-50: #5d5dd5;
   --color-windows95-blue-100: blue;
@@ -47,11 +49,20 @@ textarea {
 body[data-theme=windows95] {
   background: var(--color-windows95-blue-50);
 }
+body[data-theme=windows95] .player-container {
+  grid-area: player;
+}
 body[data-theme=modern] {
   background: var(--color-modern-yellow-200);
 }
+body[data-theme=modern] .player-container {
+  grid-area: player;
+}
 body[data-theme=retro] {
   background: red;
+}
+body[data-theme=retro] .player-container {
+  grid-area: player;
 }
 
 .player-container {
@@ -64,6 +75,8 @@ body[data-theme=retro] {
   grid-template-areas: ". . ." ". player ." ". author ." ". . .";
 }
 .player-container .player {
+  width: 100%;
+  height: 100%;
   grid-area: player;
 }
 .player-container .author {
@@ -98,4 +111,71 @@ body[data-theme=retro] {
 .author h6 strong a:hover, .author h6 strong a:focus {
   color: var(--color-windows95-gray-400);
   background-size: 100% 100%;
+}
+
+.windows-95-player {
+  max-width: 512px;
+  max-height: 326px;
+  /* 54px */
+  padding: clamp(0.85rem, 0.6326704545rem + 1.2878787879vw, 2.178125rem);
+  /* 42px */
+  border-radius: clamp(0.6rem, 0.4465909091rem + 0.9090909091vw, 1.5375rem);
+  background: var(--color-windows95-gray-200);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 2fr 1fr;
+  grid-template-areas: "music-info" "buttons" "length";
+}
+
+.windows-95-player .length-container {
+  overflow: hidden;
+  position: relative;
+  grid-area: length;
+  width: 100%;
+  height: 36px;
+  background: var(--color-windows95-gray-500);
+}
+
+.windows-95-player .length-container .meter {
+  width: 94%;
+  height: 60%;
+  z-index: 2;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: var(--color-windows95-gray-500);
+}
+
+.windows-95-player .length-container .meter .progress {
+  width: 30%;
+  height: 100%;
+  padding: 10px;
+  background: var(--color-windows95-blue-100);
+}
+
+.windows-95-player .length-container .background {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.windows-95-player .length-container .background::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  clip-path: polygon(0 100%, 0 0, 100% 0, 97% 20%, 3% 20%, 3% 80%);
+  background: var(--color-windows95-gray-300);
+}
+
+.windows-95-player .length-container .background::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  clip-path: polygon(3% 80%, 97% 80%, 97% 20%, 100% 0, 100% 100%, 0 100%);
+  background: var(--color-windows95-gray-50);
 }
