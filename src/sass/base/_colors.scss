@@ -18,16 +18,30 @@ $players: (
   ),
   modern: (
     gray: (
-      200:
+      100: hsl(0, 100%, 100%),
+      200: hsl(0, 0%, 77%),
+      300: radial-gradient(hsl(0, 0%, 90%), hsl(0, 0%, 62%)),
+      400:
         linear-gradient(
           180deg,
-          #473421 0%,
-          #cfc6a9 23.31%,
-          #ffffdc 44.58%,
-          #d3caa6 66.65%,
-          #67543f 100%
+          #f5f4f2 0%,
+          #f6f5f3 23.31%,
+          #f3f2f0 44.58%,
+          #a4a3a1 66.65%,
+          #5d5b5e 100%
         ),
-      700:
+      500: linear-gradient(31.62deg, #888380 -23.63%, #c0bcb9 119.34%),
+      600: linear-gradient(150deg, hsl(0, 6%, 54%), hsl(14, 9%, 16%)),
+      700: /* BAR GRADIENT */
+        linear-gradient(
+          180deg,
+          #201c1b 0%,
+          #35312e 23.31%,
+          #76716e 44.58%,
+          #2b2726 66.65%,
+          #262322 100%
+        ),
+      800: /* LITTLE PLUG GRADIENT */
         linear-gradient(
           180deg,
           #181818 0%,
@@ -36,13 +50,29 @@ $players: (
           #222222 66.65%,
           #000000 100%
         ),
-      800: linear-gradient(136.13deg, #404040 -0.23%, #000000 24.77%),
       900: hsl(252, 9%, 11%),
     ),
     yellow: (
-      50: linear-gradient(to bottom, hsl(43, 89%, 61%), hsl(61, 100%, 79%)),
-      100: linear-gradient(to bottom, hsl(48, 100%, 68%), hsl(38, 77%, 50%)),
-      200: linear-gradient(to bottom, hsl(47, 100%, 63%), hsl(35, 100%, 37%)),
+      50:
+        radial-gradient(
+          73.59% 94.8% at 1.92% -1.14%,
+          #fdff94 0%,
+          rgba(252, 255, 118, 0) 100%
+        ),
+      100: linear-gradient(150deg, hsl(43, 89%, 61%), hsl(61, 100%, 79%)),
+      200: linear-gradient(to bottom, hsl(48, 100%, 68%), hsl(38, 77%, 59%)),
+      250: linear-gradient(150deg, #D49628, #caa232),
+      300: linear-gradient(to bottom, hsl(47, 100%, 63%), hsl(35, 100%, 37%)),
+    ),
+    red: (
+      100: linear-gradient(180deg, #1a191e 37.53%, #ff4949 47.23%, #e02115 100%),
+    ),
+    blue: (
+      100:
+        linear-gradient(180deg, #1a191e 17.5%, #4971ff 27.37%, #6349ff 94.79%),
+    ),
+    green: (
+      100: linear-gradient(180deg, #1a191e 58.23%, #2ad870 66.27%, #00c868 100%),
     ),
   ),
   retro: (),

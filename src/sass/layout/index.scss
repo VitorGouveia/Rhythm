@@ -10,7 +10,7 @@
 
 body {
   @include setBackground('windows95', var(--color-windows95-blue-50));
-  @include setBackground('modern', var(--color-modern-yellow-200));
+  @include setBackground('modern', var(--color-modern-yellow-300));
   @include setBackground('retro', red);
 }
 

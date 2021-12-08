@@ -1,0 +1,209 @@
+@import '../../mixins';
+
+.modern-player {
+  max-width: 900px;
+  max-height: 760px;
+
+  display: grid;
+
+  align-content: space-around;
+
+  grid-template-rows: 70vh;
+  grid-template-columns: 0.6fr 1fr;
+  grid-template-areas: 'dock player';
+  column-gap: 1.4rem;
+
+  .dock {
+    grid-area: dock;
+
+    justify-self: self-end;
+
+    width: 100%;
+    max-width: 215px;
+
+    place-items: center;
+    padding: useClamp(12.8);
+
+    display: grid;
+    grid-template-columns: 100%;
+    $base-row: 1fr;
+    grid-template-rows:
+      $base-row
+      calc($base-row + ($base-row * 0.6))
+      calc($base-row + ($base-row * 0.7));
+
+    grid-template-areas:
+      'dotted'
+      'preview'
+      'footer'
+      ;
+    row-gap: 1.2rem;
+
+    border-radius: 4px;
+    background: var(--color-modern-yellow-200);
+
+    background-clip: padding-box;
+    border: solid 1px transparent;
+    position: relative;
+
+    box-shadow: 0px 8px 37px 3px rgba(118, 50, 0, 0.83);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -1px; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: var(--color-modern-yellow-50);
+    }
+
+    .dotted-grid {
+      grid-area: dotted;
+
+      display: grid;
+      grid-template-columns: repeat(8, 5px);
+
+      @media screen and (min-width: 481px) {
+        grid-template-columns: repeat(13, 5px);
+      }
+      
+      grid-template-rows: auto;
+      gap: 10px;
+
+      .dot {
+        $size: 7px;
+        width: $size;
+        height: $size;
+
+        background: var(--color-modern-yellow-100);
+
+        border-radius: 50%;
+
+        position: relative;
+
+        &::before {
+          content: '';
+
+          // $size2: $size - ($size * 0.4);
+          $size2: 4.2px;
+          width: $size2;
+          height: $size2;
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          
+          border-radius: inherit; /* !importanté */
+          background: var(--color-modern-gray-900);
+        }
+      }
+    }
+
+    .preview {
+      grid-area: preview;
+
+      width: 100%;
+      height: 100%;
+
+      background: var(--color-modern-yellow-250);
+
+      display: grid;
+      place-items: center;
+
+      .display {
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+
+        background: var(--color-modern-gray-900);
+        border-radius: 5px;
+      }
+
+      border-radius: 5px;
+    }
+
+    footer {
+      grid-area: footer;
+
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      
+      @media (min-width: 600px) {
+        flex-direction: row;
+      }
+
+      .dock-control {
+
+      }
+  
+      .levels {
+        .title {
+          opacity: 0.7;
+          display: flex;
+          position: relative;
+  
+          h4 {
+            color: var(--color-modern-gray-100);
+            font-size: useClamp(16);
+          }
+  
+          &::before {
+            content: '';
+  
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+  
+            width: 50%;
+            height: 1px;
+  
+            background: var(--color-modern-gray-100);
+          }
+        }
+      }
+    }
+
+
+    .dock-control {
+    }
+  }
+
+  .player {
+    grid-area: player;
+
+    max-width: 670px;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 4px;
+    background: var(--color-modern-yellow-200);
+
+    background-clip: padding-box;
+    border: solid 1px transparent;
+    position: relative;
+
+    box-shadow: 0px 8px 37px 3px rgba(118, 50, 0, 0.83);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -1px; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: var(--color-modern-yellow-50);
+    }
+  }
+}
