@@ -40,7 +40,7 @@ const render = () => {
     const closest = useMedia({
       width,
     });
-    console.log(closest);
+
     switch (closest) {
       case 'smallMobile':
         renderDots(5, 5);
@@ -50,6 +50,10 @@ const render = () => {
         break;
 
       case 'smallLaptop':
+        renderDots(13, 9);
+        break;
+
+      case 'largeLaptop':
         renderDots(13, 9);
         break;
       case 'ExtraLargeDesktop':

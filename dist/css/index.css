@@ -51,6 +51,7 @@ textarea {
   --color-modern-yellow-100: linear-gradient(150deg, #f4c243, #fdff94);
   --color-modern-yellow-200: linear-gradient(to bottom, #ffde5c, #e7ac46);
   --color-modern-yellow-250: linear-gradient(150deg, #D49628, #caa232);
+  --color-modern-yellow-270: #EBAE31;
   --color-modern-yellow-300: linear-gradient(to bottom, #ffd642, #bd6e00);
   --color-modern-red-100: linear-gradient(180deg, #1a191e 37.53%, #ff4949 47.23%, #e02115 100%);
   --color-modern-blue-100: linear-gradient(180deg, #1a191e 17.5%, #4971ff 27.37%, #6349ff 94.79%);
@@ -431,12 +432,12 @@ body[data-theme=retro] .player-container {
   width: 100%;
   max-width: 215px;
   place-items: center;
-  padding: clamp(0.32rem, 0.2381818182rem + 0.4848484848vw, 0.82rem);
+  padding: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 1.6fr 1.7fr;
+  grid-template-rows: 1fr 1.6fr 2fr;
   grid-template-areas: "dotted" "preview" "footer";
-  row-gap: 1.2rem;
+  row-gap: clamp(0.5rem, 0.3721590909rem + 0.7575757576vw, 1.28125rem);
   border-radius: 4px;
   background: var(--color-modern-yellow-200);
   background-clip: padding-box;
@@ -514,9 +515,9 @@ body[data-theme=retro] .player-container {
 .modern-player .dock footer {
   grid-area: footer;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -525,26 +526,154 @@ body[data-theme=retro] .player-container {
     flex-direction: row;
   }
 }
+.modern-player .dock footer .levels {
+  width: 40%;
+  display: grid;
+  grid-template-areas: "title" "lines";
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: auto;
+  place-items: center;
+  padding-top: clamp(0.2rem, 0.1488636364rem + 0.303030303vw, 0.5125rem);
+}
+
 .modern-player .dock footer .levels .title {
+  width: 100%;
+  grid-area: title;
   opacity: 0.7;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
 }
 
 .modern-player .dock footer .levels .title h4 {
   color: var(--color-modern-gray-100);
-  font-size: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
+  font-size: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
 }
 
-.modern-player .dock footer .levels .title::before {
+.modern-player .dock footer .levels .lines {
+  grid-area: lines;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.modern-player .dock footer .levels .lines .line {
+  width: 27%;
+  border-radius: 16px;
+  position: relative;
+  background: linear-gradient(150.95deg, #C0841A -21.43%, #FCD453 104.76%);
+  height: 100%;
+}
+
+.modern-player .dock footer .levels .lines .line::before {
   content: "";
   position: absolute;
-  right: 0px;
+  inset: 0;
+  margin: auto;
+  border-radius: 32px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+}
+
+.modern-player .dock footer .levels .lines .line-1::before {
+  background: linear-gradient(180deg, #1A191E 17.5%, #4971FF 27.37%, #6349FF 94.79%);
+}
+
+.modern-player .dock footer .levels .lines .line-2::before {
+  background: linear-gradient(180deg, #1A191E 37.53%, #FF4949 47.23%, #E02115 100%);
+}
+
+.modern-player .dock footer .levels .lines .line-3::before {
+  background: linear-gradient(180deg, #1A191E 58.23%, #2AD870 66.27%, #00C868 100%);
+}
+
+.modern-player .dock .dock-control {
+  display: grid;
+  grid-template-areas: "title" "lights";
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: auto;
+  place-items: center;
+  border-radius: 8px;
+  padding: clamp(0.2rem, 0.1488636364rem + 0.303030303vw, 0.5125rem);
+  padding-bottom: clamp(0.15rem, 0.1116477273rem + 0.2272727273vw, 0.384375rem);
+  background: rgba(255, 255, 255, 0.425);
+}
+
+.modern-player .dock .dock-control .title {
+  width: 100%;
+  grid-area: title;
+  opacity: 0.7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.modern-player .dock .dock-control .title h4 {
+  color: var(--color-modern-yellow-270);
+  font-size: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
+}
+
+.modern-player .dock .dock-control .lights {
+  grid-area: lights;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  place-items: center;
+  width: 100%;
+  height: 97%;
+  opacity: 1;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #ECB54A 0%, #E8AE47 100%);
+}
+
+.modern-player .dock .dock-control .lights .light {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(150.95deg, #C0841A -21.43%, #FCD453 104.76%);
+  position: relative;
+  border-radius: 50%;
+}
+
+.modern-player .dock .dock-control .lights .light::before {
+  content: "";
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.modern-player .dock .dock-control .lights .light::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  box-shadow: 0 0 4px 4px rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.4);
+  position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  width: 50%;
-  height: 1px;
-  background: var(--color-modern-gray-100);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.modern-player .dock .dock-control .lights .light:not(.light-1)::before {
+  background: #fff;
+}
+
+.modern-player .dock .dock-control .lights .light-1::before {
+  background: radial-gradient(116.67% 116.67% at 33.33% 25%, #95A29F 0%, #3E3E3E 100%);
+}
+
+.modern-player .dock .dock-control .lights span, .modern-player .dock .dock-control .lights button {
+  width: 5px;
+  height: 5px;
+  background: red;
 }
 
 .modern-player .player {
