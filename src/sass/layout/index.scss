@@ -11,7 +11,7 @@
 body {
   @include setBackground('windows95', var(--color-windows95-blue-50));
   @include setBackground('modern', var(--color-modern-yellow-300));
-  @include setBackground('retro', red);
+  @include setBackground('retro', #232233);
 }
 
 .player-container {
@@ -32,6 +32,8 @@ body {
   .player {
     width: 100%;
     height: 100%;
+
+    display: none;
 
     grid-area: player;
   }

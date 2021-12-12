@@ -1,15 +1,14 @@
 export class Theme {
     constructor(theme) {
-        this.theme = 'windows95';
+        this.theme = this.getStorageTheme();
         this.defaultTheme = 'windows95';
         this.availableThemes = {
             windows95: 'windows95',
             modern: 'modern',
             retro: 'retro',
         };
-        let newTheme = theme;
-        const isValidTheme = this.availableThemes[theme];
-        if (!isValidTheme) {
+        let newTheme = theme || this.theme;
+        if (!this.availableThemes[newTheme]) {
             newTheme = this.defaultTheme;
         }
         this.setTheme(newTheme);
@@ -19,16 +18,20 @@ export class Theme {
         localStorage.setItem('theme', theme);
         document.body.setAttribute('data-theme', theme);
     }
-    cycle() {
+    nextTheme() {
         const themeArray = Object.keys(this.availableThemes);
-        const dataTheme = document.body.getAttribute('data-theme') || this.defaultTheme;
-        const currentThemeIndex = themeArray.indexOf(dataTheme);
+        const current = themeArray.indexOf(document.body.getAttribute('data-theme') || this.defaultTheme);
         const max = themeArray.length;
-        let next = currentThemeIndex + 1;
-        if (next === max) {
+        let next = current + 1;
+        if (next === max)
             next = 0;
-        }
-        this.setTheme(themeArray[next]);
         return themeArray[next];
+    }
+    getStorageTheme() {
+        return localStorage.getItem('theme');
+    }
+    cycle() {
+        const nextTheme = this.nextTheme();
+        this.setTheme(nextTheme);
     }
 }
