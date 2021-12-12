@@ -15,7 +15,10 @@ const players = {
     retro: document.querySelector('.retro-player'),
 };
 const dottedGrid = document.querySelector('.dotted-grid');
-const renderDots = (rows, cols) => {
+const renderDots = () => {
+    const { gridTemplateColumns } = window.getComputedStyle(dottedGrid);
+    const cols = gridTemplateColumns.split(' ').length;
+    const rows = cols + 2;
     const dotAmount = rows * cols;
     const allDots = document.querySelectorAll('.dot');
     allDots.forEach(dot => {
@@ -30,7 +33,7 @@ const renderDots = (rows, cols) => {
 const render = () => {
     const width = window.innerWidth;
     if (window.matchMedia('(max-width: 481px)').matches) {
-        renderDots(8, 5);
+        renderDots();
     }
     else {
         const closest = useMedia({
@@ -38,19 +41,19 @@ const render = () => {
         });
         switch (closest) {
             case 'smallMobile':
-                renderDots(5, 5);
+                renderDots();
                 break;
             case 'smallTablet':
-                renderDots(13, 9);
+                renderDots();
                 break;
             case 'smallLaptop':
-                renderDots(13, 9);
+                renderDots();
                 break;
             case 'largeLaptop':
-                renderDots(13, 9);
+                renderDots();
                 break;
             case 'ExtraLargeDesktop':
-                renderDots(13, 15);
+                renderDots(5);
                 break;
         }
     }

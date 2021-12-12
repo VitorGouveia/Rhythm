@@ -28,9 +28,9 @@
     grid-template-columns: 100%;
     $base-row: 1fr;
     grid-template-rows:
-      $base-row
-      calc($base-row + ($base-row * 0.6))
-      calc($base-row + $base-row);
+      1fr
+      1.8fr
+      1.6fr;
 
     grid-template-areas:
       'dotted'
@@ -146,10 +146,12 @@
           "title"
           "lines"
         ;
-        grid-template-rows: 1fr 4fr;
+        grid-template-rows: auto 4fr;
         grid-template-columns: auto;
         place-items: center;
+
         padding-top: useClamp(8);
+        padding-bottom: useClamp(6);
 
         .title {
           width: 100%;
@@ -159,6 +161,7 @@
           justify-content: flex-start;
           align-items: center;
           position: relative;
+          margin-bottom: 0.2rem;
   
           h4 {
             color: var(--color-modern-gray-100);
@@ -216,7 +219,7 @@
         "title"
         "lights"
       ;
-      grid-template-rows: 1fr 4fr;
+      grid-template-rows: auto 4fr;
       grid-template-columns: auto;
       place-items: center;
       border-radius: 8px;
@@ -234,6 +237,7 @@
         justify-content: flex-start;
         align-items: center;
         position: relative;
+        margin-bottom: 0.2rem;
 
         h4 {
           color: var(--color-modern-yellow-270);
@@ -253,6 +257,7 @@
         opacity: 1;
         border-radius: 6px;
         background: linear-gradient(180deg, #ECB54A 0%, #E8AE47 100%);
+        padding: useClamp(4) 0;
 
         .light {
           $lightSize: 12px;
@@ -311,10 +316,58 @@
           }
         }
 
-        span, button {
-          width: 5px;
-          height: 5px;
-          background: red;
+        .button {
+          width: 22px;
+          height: 22px;
+
+          border-radius: 50%;
+          background: linear-gradient(180deg, #656565 -41.36%, #020101 58.64%);
+          margin-top: 0.4rem;
+          
+          position: relative;
+
+          &::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+            margin: auto;
+
+            width: calc(100% - 3px);
+            height: calc(100% - 3px);
+            
+            border-radius: 50%;
+            background: radial-gradient(102.27% 102.27% at 59.09% 59.09%, #494850 0%, #000000 100%);
+          }
+
+          &::after {
+            content: "";
+
+            position: absolute;
+            top: 4px;
+
+            width: 0;
+            height: 0;
+
+            $triangleSize: 4px;
+            border-left: $triangleSize solid transparent;
+            border-right: $triangleSize solid transparent;
+            border-bottom: $triangleSize solid #fff;
+          }
+          
+          &-left {
+            &::after {
+              left: 4px;
+              transform: rotate(-45deg);
+            }
+          }
+          
+          &-right {
+            &::after {
+              right: 4px;
+              transform: rotate(45deg);
+            }
+          }
         }
       }
     }

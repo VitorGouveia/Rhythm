@@ -7,9 +7,14 @@ const players = {
   retro: document.querySelector('.retro-player') as HTMLElement,
 };
 
-const dottedGrid = document.querySelector('.dotted-grid');
+const dottedGrid = document.querySelector('.dotted-grid')!;
 
-const renderDots = (rows: number, cols: number) => {
+const renderDots = () => {
+  const { gridTemplateColumns } = window.getComputedStyle(dottedGrid);
+
+  const cols = gridTemplateColumns.split(' ').length;
+  const rows = cols + 2;
+
   const dotAmount = rows * cols;
 
   const allDots = document.querySelectorAll('.dot');
@@ -24,6 +29,7 @@ const renderDots = (rows: number, cols: number) => {
 
     dottedGrid?.appendChild(dot);
   }
+  /* JUST GET the computed style of grids and rows */
 };
 /**
  * TODO: listen to window size change
@@ -35,7 +41,7 @@ const render = () => {
   const width = window.innerWidth;
 
   if (window.matchMedia('(max-width: 481px)').matches) {
-    renderDots(8, 5);
+    renderDots();
   } else {
     const closest = useMedia({
       width,
@@ -43,21 +49,21 @@ const render = () => {
 
     switch (closest) {
       case 'smallMobile':
-        renderDots(5, 5);
+        renderDots();
         break;
       case 'smallTablet':
-        renderDots(13, 9);
+        renderDots();
         break;
 
       case 'smallLaptop':
-        renderDots(13, 9);
+        renderDots();
         break;
 
       case 'largeLaptop':
-        renderDots(13, 9);
+        renderDots();
         break;
       case 'ExtraLargeDesktop':
-        renderDots(13, 15);
+        renderDots(5);
         break;
     }
   }
