@@ -10,7 +10,11 @@ export class DotsRenderer {
       const cols = gridTemplateColumns.split(' ').length;
       const rows = cols - 2;
 
-      const dotAmount = rows * cols;
+      let dotAmount = rows * cols;
+
+      if (window.matchMedia(`(max-width: 992px)`).matches) {
+        dotAmount = 32 * 3;
+      }
 
       const allDots = document.querySelectorAll('.dot');
 

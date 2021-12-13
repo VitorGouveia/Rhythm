@@ -422,22 +422,48 @@ body[data-theme=retro] .player-container {
   display: grid;
   align-content: space-around;
   grid-template-rows: 70vh;
-  grid-template-columns: 0.6fr 1fr;
-  grid-template-areas: "dock player";
-  column-gap: 1.4rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "dock" "player";
+  gap: 1.4rem;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
 }
 
+@media only screen and (min-width: 62rem) {
+  .modern-player {
+    grid-template-columns: 0.6fr 1fr;
+    grid-template-areas: "dock player";
+  }
+}
 .modern-player .dock {
   grid-area: dock;
   justify-self: self-end;
   width: 100%;
-  max-width: 215px;
+  padding: clamp(1.6rem, 1.1909090909rem + 2.4242424242vw, 4.1rem) clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   place-items: center;
-  padding: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
   display: grid;
-  grid-template-columns: 100%;
   grid-template-rows: 1fr 1.8fr 1.6fr;
-  grid-template-areas: "dotted" "preview" "footer";
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  grid-template-areas: ". dotted ." ". preview ." ". footer .";
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   row-gap: clamp(0.5rem, 0.3721590909rem + 0.7575757576vw, 1.28125rem);
   border-radius: 4px;
   background: var(--color-modern-yellow-200);
@@ -447,6 +473,18 @@ body[data-theme=retro] .player-container {
   box-shadow: 0px 8px 37px 3px rgba(118, 50, 0, 0.83);
 }
 
+@media only screen and (min-width: 62rem) {
+  .modern-player .dock {
+    padding: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
+    max-width: 215px;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .modern-player .dock {
+    grid-template-columns: 100%;
+    grid-template-areas: "dotted" "preview" "footer";
+  }
+}
 .modern-player .dock::before {
   content: "";
   position: absolute;
@@ -465,12 +503,19 @@ body[data-theme=retro] .player-container {
 .modern-player .dock .dotted-grid {
   grid-area: dotted;
   display: grid;
-  grid-template-columns: repeat(5, 5px);
+  grid-template-columns: repeat(32, 5px);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   grid-template-rows: auto;
   gap: 10px;
 }
 
-@media screen and (min-width: 481px) {
+@media only screen and (min-width: 62rem) {
   .modern-player .dock .dotted-grid {
     grid-template-columns: repeat(13, 5px);
   }
@@ -499,13 +544,25 @@ body[data-theme=retro] .player-container {
 .modern-player .dock .preview {
   grid-area: preview;
   width: 100%;
-  height: 100%;
+  height: 150px;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   background: var(--color-modern-yellow-250);
   display: grid;
   place-items: center;
   border-radius: 5px;
 }
 
+@media only screen and (min-width: 62rem) {
+  .modern-player .dock .preview {
+    height: 100%;
+  }
+}
 .modern-player .dock .preview .display {
   width: calc(100% - 6px);
   height: calc(100% - 6px);
@@ -517,13 +574,22 @@ body[data-theme=retro] .player-container {
   grid-area: footer;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
 }
 
-@media (min-width: 600px) {
+@media only screen and (min-width: 62rem) {
   .modern-player .dock footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex-direction: row;
   }
 }
@@ -551,9 +617,21 @@ body[data-theme=retro] .player-container {
 
 .modern-player .dock footer .levels .title h4 {
   color: var(--color-modern-gray-100);
-  font-size: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
+  font-size: clamp(0.55rem, 0.409375rem + 0.8333333333vw, 1.409375rem);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
 }
 
+@media only screen and (min-width: 62rem) {
+  .modern-player .dock footer .levels .title h4 {
+    font-size: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
+  }
+}
 .modern-player .dock footer .levels .lines {
   grid-area: lines;
   display: flex;
@@ -564,6 +642,7 @@ body[data-theme=retro] .player-container {
 
 .modern-player .dock footer .levels .lines .line {
   width: 27%;
+  max-width: 25px;
   border-radius: 16px;
   position: relative;
   background: linear-gradient(150.95deg, #C0841A -21.43%, #FCD453 104.76%);
@@ -592,7 +671,7 @@ body[data-theme=retro] .player-container {
   background: linear-gradient(180deg, #1A191E 58.23%, #2AD870 66.27%, #00C868 100%);
 }
 
-.modern-player .dock .dock-control {
+.modern-player .dock footer .dock-control {
   display: grid;
   grid-template-areas: "title" "lights";
   grid-template-rows: auto 4fr;
@@ -604,7 +683,7 @@ body[data-theme=retro] .player-container {
   background: rgba(255, 255, 255, 0.425);
 }
 
-.modern-player .dock .dock-control .title {
+.modern-player .dock footer .dock-control .title {
   width: 100%;
   grid-area: title;
   opacity: 0.7;
@@ -615,12 +694,24 @@ body[data-theme=retro] .player-container {
   margin-bottom: 0.2rem;
 }
 
-.modern-player .dock .dock-control .title h4 {
+.modern-player .dock footer .dock-control .title h4 {
   color: var(--color-modern-yellow-270);
-  font-size: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
+  font-size: clamp(0.55rem, 0.409375rem + 0.8333333333vw, 1.409375rem);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
 }
 
-.modern-player .dock .dock-control .lights {
+@media only screen and (min-width: 62rem) {
+  .modern-player .dock footer .dock-control .title h4 {
+    font-size: clamp(0.3rem, 0.2232954545rem + 0.4545454545vw, 0.76875rem);
+  }
+}
+.modern-player .dock footer .dock-control .lights {
   grid-area: lights;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -635,7 +726,7 @@ body[data-theme=retro] .player-container {
   padding: clamp(0.1rem, 0.0744318182rem + 0.1515151515vw, 0.25625rem) 0;
 }
 
-.modern-player .dock .dock-control .lights .light {
+.modern-player .dock footer .dock-control .lights .light {
   width: 12px;
   height: 12px;
   background: linear-gradient(150.95deg, #C0841A -21.43%, #FCD453 104.76%);
@@ -643,7 +734,7 @@ body[data-theme=retro] .player-container {
   border-radius: 50%;
 }
 
-.modern-player .dock .dock-control .lights .light::before {
+.modern-player .dock footer .dock-control .lights .light::before {
   content: "";
   width: calc(100% - 3px);
   height: calc(100% - 3px);
@@ -653,7 +744,7 @@ body[data-theme=retro] .player-container {
   border-radius: 50%;
 }
 
-.modern-player .dock .dock-control .lights .light::after {
+.modern-player .dock footer .dock-control .lights .light::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -667,15 +758,15 @@ body[data-theme=retro] .player-container {
   border-radius: 50%;
 }
 
-.modern-player .dock .dock-control .lights .light:not(.light-1)::before {
+.modern-player .dock footer .dock-control .lights .light:not(.light-1)::before {
   background: #fff;
 }
 
-.modern-player .dock .dock-control .lights .light-1::before {
+.modern-player .dock footer .dock-control .lights .light-1::before {
   background: radial-gradient(116.67% 116.67% at 33.33% 25%, #95A29F 0%, #3E3E3E 100%);
 }
 
-.modern-player .dock .dock-control .lights .button {
+.modern-player .dock footer .dock-control .lights .button {
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -684,7 +775,7 @@ body[data-theme=retro] .player-container {
   position: relative;
 }
 
-.modern-player .dock .dock-control .lights .button::before {
+.modern-player .dock footer .dock-control .lights .button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -695,7 +786,7 @@ body[data-theme=retro] .player-container {
   background: radial-gradient(102.27% 102.27% at 59.09% 59.09%, #494850 0%, #000000 100%);
 }
 
-.modern-player .dock .dock-control .lights .button::after {
+.modern-player .dock footer .dock-control .lights .button::after {
   content: "";
   position: absolute;
   top: 4px;
@@ -706,21 +797,31 @@ body[data-theme=retro] .player-container {
   border-bottom: 4px solid #fff;
 }
 
-.modern-player .dock .dock-control .lights .button-left::after {
+.modern-player .dock footer .dock-control .lights .button-left::after {
   left: 4px;
   transform: rotate(-45deg);
 }
 
-.modern-player .dock .dock-control .lights .button-right::after {
+.modern-player .dock footer .dock-control .lights .button-right::after {
   right: 4px;
   transform: rotate(45deg);
 }
 
 .modern-player .player-right {
   grid-area: player;
-  max-width: 670px;
+  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 4px;
   background: var(--color-modern-yellow-200);
   background-clip: padding-box;
@@ -729,6 +830,11 @@ body[data-theme=retro] .player-container {
   box-shadow: 0px 8px 37px 3px rgba(118, 50, 0, 0.83);
 }
 
+@media only screen and (min-width: 62rem) {
+  .modern-player .player-right {
+    max-width: 670px;
+  }
+}
 .modern-player .player-right::before {
   content: "";
   position: absolute;
@@ -742,4 +848,183 @@ body[data-theme=retro] .player-container {
   border-radius: inherit;
   /* !importanté */
   background: var(--color-modern-yellow-50);
+}
+
+.modern-player .player-right .disc {
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+  width: clamp(12.5rem, 9.3039772727rem + 18.9393939394vw, 32.03125rem);
+  height: clamp(12.5rem, 9.3039772727rem + 18.9393939394vw, 32.03125rem);
+  position: relative;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #3F3C37 0%, #191813 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media only screen and (min-width: 16.875rem) {
+  .modern-player .player-right .disc {
+    width: clamp(2.5rem, 1.8607954545rem + 3.7878787879vw, 6.40625rem);
+    height: clamp(2.5rem, 1.8607954545rem + 3.7878787879vw, 6.40625rem);
+  }
+}
+@media only screen and (min-width: 48rem) {
+  .modern-player .player-right .disc {
+    width: clamp(7.5rem, 5.5823863636rem + 11.3636363636vw, 19.21875rem);
+    height: clamp(7.5rem, 5.5823863636rem + 11.3636363636vw, 19.21875rem);
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .modern-player .player-right .disc {
+    width: clamp(12.5rem, 9.3039772727rem + 18.9393939394vw, 32.03125rem);
+    height: clamp(12.5rem, 9.3039772727rem + 18.9393939394vw, 32.03125rem);
+  }
+}
+.modern-player .player-right .disc::before {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  background: transparent;
+  border: 2px solid #181718;
+  box-shadow: 0 0 1px 1px #181718;
+}
+
+.modern-player .player-right .disc .middle {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #3E3B36 0%, #1A1914 100%);
+  box-shadow: -2px -4px 4px #3E3B36, 2px 4px 4px #1B1A15;
+}
+
+.modern-player .player-right .disc .middle::before {
+  content: "";
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  background: #3F3C37;
+  box-shadow: 0px 8px 13px rgba(0, 0, 0, 0.6);
+}
+
+.modern-player .player-right .disc .needle {
+  height: 100%;
+  position: absolute;
+  top: -30%;
+  right: -60%;
+  transform: rotate(90deg) scale(0.9);
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+}
+
+@media only screen and (min-width: 62rem) {
+  .modern-player .player-right .disc .needle {
+    top: -5%;
+    right: 15%;
+    transform: rotate(0deg);
+  }
+}
+.modern-player .player-right .disc .needle .stand {
+  width: 10px;
+  height: 30px;
+  z-index: 10;
+  background: transparent;
+  position: relative;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modern-player .player-right .disc .needle .stand::before, .modern-player .player-right .disc .needle .stand::after {
+  content: "";
+  width: 12px;
+  height: 30px;
+  background: linear-gradient(90deg, #38373D -14%, #EBE9EB 39.85%, #FFFDFF 61.91%, #5E5C61 110%), linear-gradient(89deg, #38373D -12.81%, #FFFDFF 52.58%, #5E5C61 109.1%);
+  position: absolute;
+}
+
+.modern-player .player-right .disc .needle .stand::before {
+  left: -15px;
+}
+
+.modern-player .player-right .disc .needle .stand::after {
+  right: -15px;
+}
+
+.modern-player .player-right .disc .needle .bar {
+  width: 16px;
+  height: 270px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #201C1B 0%, #35312E 23.31%, #76716E 44.58%, #2B2726 66.65%, #262322 100%);
+  position: relative;
+}
+
+.modern-player .player-right .disc .needle .bar .tip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #EBEBEB;
+  background: #C4C4C4;
+}
+
+.modern-player .player-right .disc .needle .bar .tip::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  background: #202020;
+  border-radius: 50%;
+}
+
+.modern-player .player-right .disc .needle .bar .tip::after {
+  content: "";
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 7px;
+  height: 7px;
+  background: #EDBB88;
+  box-shadow: inset 0px 1px 3px #9A6227;
+  border-radius: 50%;
 }
