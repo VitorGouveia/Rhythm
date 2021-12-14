@@ -1,10 +1,15 @@
 @import '../../mixins';
 
 .modern-player {
-  max-width: 900px;
+  max-width: 500px;
+
+  @include useMedia(large) {
+    max-width: 900px;
+  }
   max-height: 760px;
 
   display: grid;
+  align-items: center;
 
   align-content: space-around;
 
@@ -12,12 +17,12 @@
   grid-template-columns: 1fr;
   grid-template-areas:
   'dock'
-  'player';
-  gap: 1.4rem;
+  'player-right';
   
   @include useMedia(large) {
+    gap: 1.4rem;
     grid-template-columns: 0.6fr 1fr;
-    grid-template-areas: 'dock player';
+    grid-template-areas: 'dock player-right';
   }
 
   .dock {
@@ -26,31 +31,30 @@
     justify-self: self-end;
 
     width: 100%;
-
-    padding: useClamp(64) useClamp(16);
-
-    @include useMedia(large) {
-      padding: useClamp(16);
-      max-width: 215px;
-    }
-
+    height: min-content;
+    
     place-items: center;
+    padding: useClamp(32) useClamp(16);
 
     display: grid;
     $base-row: 1fr;
-    grid-template-rows:
-      1fr
-      1.8fr
-      1.6fr;
-
+    
+    grid-template-rows: repeat(3, min-content);
     grid-template-columns: 0.5fr 1fr 0.5fr;
     grid-template-areas:
-      '. dotted .'
-        '. preview .'
-        '. footer .'
-      ;
-
+    '. dotted .'
+    '. preview .'
+    '. footer .'
+    ;
+      
     @include useMedia(large) {
+      height: 100%;
+      padding: useClamp(16);
+      max-width: 215px;
+      grid-template-rows:
+        1fr
+        1.8fr
+        1.6fr;
       grid-template-columns: 100%;
 
       grid-template-areas:
@@ -59,7 +63,9 @@
           'footer'
         ;
     }
+
     row-gap: useClamp(20);
+    place-content: center;
 
     border-radius: 4px;
     background: var(--color-modern-yellow-200);
@@ -87,7 +93,11 @@
       grid-area: dotted;
 
       display: grid;
-      grid-template-columns: repeat(32, 5px);
+      grid-template-columns: repeat(16, 5px);
+
+      // @media screen and () {
+      //   grid-template-columns: repeat(32, 5px);
+      // }
 
       @include useMedia(large) {
         grid-template-columns: repeat(13, 5px);
@@ -169,7 +179,10 @@
       }
   
       .levels {
-        width: 40%;
+        width: 50%;
+        @include useMedia(medium) { 
+          width: 40%;
+        }
         display: grid;
         grid-template-areas:
           "title"
@@ -411,11 +424,13 @@
   }
 
   .player-right {
-    grid-area: player;
+    grid-area: player-right;
 
-    padding: useClamp(32);
-
+    padding: useClamp(32) useClamp(64);
+    
     @include useMedia(large) {
+      padding: useClamp(32);
+      justify-content: center;
       max-width: 670px;
     }
 
@@ -425,6 +440,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    @include useMedia(small) {
+      justify-content: flex-start;
+    }
+
+    @include useMedia(large) {
+      justify-content: center;
+    }
 
     border-radius: 4px;
     background: var(--color-modern-yellow-200);
@@ -449,13 +472,9 @@
     }
 
     .disc {
-      $size: useClamp(100);
-
-      @include useMedia(small) {
-        $size: useClamp(100);
-        width: $size;
-        height: $size;
-      }
+      $size: useClamp(300);
+      width: $size;
+      height: $size;
       
       @include useMedia(medium) {
         $size: useClamp(300);
@@ -468,9 +487,6 @@
         width: $size;
         height: $size;
       }
-      
-      width: $size;
-      height: $size;
 
       position: relative;
 
@@ -526,9 +542,13 @@
       }
 
       .needle {
+        display: none;
         height: 100%;
         position: absolute;
         
+        @include useMedia(small) {
+          display: block;
+        }
         top: -30%;
         right: -60%;
         transform: rotate(90deg) scale(0.9);

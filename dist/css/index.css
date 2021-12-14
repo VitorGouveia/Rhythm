@@ -181,7 +181,7 @@ body[data-theme=retro] .player-container {
   justify-content: space-between;
 }
 
-@media only screen and (min-width: 16.875rem) {
+@media only screen and (min-width: 26.25rem) {
   .windows-95-player .music-info .content {
     padding: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
   }
@@ -417,14 +417,21 @@ body[data-theme=retro] .player-container {
 }
 
 .modern-player {
-  max-width: 900px;
+  max-width: 500px;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   max-height: 760px;
   display: grid;
+  align-items: center;
   align-content: space-around;
   grid-template-rows: 70vh;
   grid-template-columns: 1fr;
-  grid-template-areas: "dock" "player";
-  gap: 1.4rem;
+  grid-template-areas: "dock" "player-right";
   /*
     BREAKPOINTS:
     sm: 425px
@@ -436,25 +443,25 @@ body[data-theme=retro] .player-container {
 
 @media only screen and (min-width: 62rem) {
   .modern-player {
+    max-width: 900px;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .modern-player {
+    gap: 1.4rem;
     grid-template-columns: 0.6fr 1fr;
-    grid-template-areas: "dock player";
+    grid-template-areas: "dock player-right";
   }
 }
 .modern-player .dock {
   grid-area: dock;
   justify-self: self-end;
   width: 100%;
-  padding: clamp(1.6rem, 1.1909090909rem + 2.4242424242vw, 4.1rem) clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
-  /*
-    BREAKPOINTS:
-    sm: 425px
-    md: 768px
-    lg: 992px
-    xl: 1200px
-  */
+  height: min-content;
   place-items: center;
+  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem) clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
   display: grid;
-  grid-template-rows: 1fr 1.8fr 1.6fr;
+  grid-template-rows: repeat(3, min-content);
   grid-template-columns: 0.5fr 1fr 0.5fr;
   grid-template-areas: ". dotted ." ". preview ." ". footer .";
   /*
@@ -465,6 +472,7 @@ body[data-theme=retro] .player-container {
     xl: 1200px
   */
   row-gap: clamp(0.5rem, 0.3721590909rem + 0.7575757576vw, 1.28125rem);
+  place-content: center;
   border-radius: 4px;
   background: var(--color-modern-yellow-200);
   background-clip: padding-box;
@@ -475,12 +483,10 @@ body[data-theme=retro] .player-container {
 
 @media only screen and (min-width: 62rem) {
   .modern-player .dock {
+    height: 100%;
     padding: clamp(0.4rem, 0.2977272727rem + 0.6060606061vw, 1.025rem);
     max-width: 215px;
-  }
-}
-@media only screen and (min-width: 62rem) {
-  .modern-player .dock {
+    grid-template-rows: 1fr 1.8fr 1.6fr;
     grid-template-columns: 100%;
     grid-template-areas: "dotted" "preview" "footer";
   }
@@ -503,7 +509,7 @@ body[data-theme=retro] .player-container {
 .modern-player .dock .dotted-grid {
   grid-area: dotted;
   display: grid;
-  grid-template-columns: repeat(32, 5px);
+  grid-template-columns: repeat(16, 5px);
   /*
     BREAKPOINTS:
     sm: 425px
@@ -594,7 +600,14 @@ body[data-theme=retro] .player-container {
   }
 }
 .modern-player .dock footer .levels {
-  width: 40%;
+  width: 50%;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   display: grid;
   grid-template-areas: "title" "lines";
   grid-template-rows: auto 4fr;
@@ -604,6 +617,11 @@ body[data-theme=retro] .player-container {
   padding-bottom: clamp(0.15rem, 0.1116477273rem + 0.2272727273vw, 0.384375rem);
 }
 
+@media only screen and (min-width: 48rem) {
+  .modern-player .dock footer .levels {
+    width: 40%;
+  }
+}
 .modern-player .dock footer .levels .title {
   width: 100%;
   grid-area: title;
@@ -808,8 +826,8 @@ body[data-theme=retro] .player-container {
 }
 
 .modern-player .player-right {
-  grid-area: player;
-  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+  grid-area: player-right;
+  padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem) clamp(1.6rem, 1.1909090909rem + 2.4242424242vw, 4.1rem);
   /*
     BREAKPOINTS:
     sm: 425px
@@ -822,6 +840,20 @@ body[data-theme=retro] .player-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   border-radius: 4px;
   background: var(--color-modern-yellow-200);
   background-clip: padding-box;
@@ -832,7 +864,19 @@ body[data-theme=retro] .player-container {
 
 @media only screen and (min-width: 62rem) {
   .modern-player .player-right {
+    padding: clamp(0.8rem, 0.5954545455rem + 1.2121212121vw, 2.05rem);
+    justify-content: center;
     max-width: 670px;
+  }
+}
+@media only screen and (min-width: 26.25rem) {
+  .modern-player .player-right {
+    justify-content: flex-start;
+  }
+}
+@media only screen and (min-width: 62rem) {
+  .modern-player .player-right {
+    justify-content: center;
   }
 }
 .modern-player .player-right::before {
@@ -851,6 +895,8 @@ body[data-theme=retro] .player-container {
 }
 
 .modern-player .player-right .disc {
+  width: clamp(7.5rem, 5.5823863636rem + 11.3636363636vw, 19.21875rem);
+  height: clamp(7.5rem, 5.5823863636rem + 11.3636363636vw, 19.21875rem);
   /*
     BREAKPOINTS:
     sm: 425px
@@ -865,27 +911,12 @@ body[data-theme=retro] .player-container {
     lg: 992px
     xl: 1200px
   */
-  /*
-    BREAKPOINTS:
-    sm: 425px
-    md: 768px
-    lg: 992px
-    xl: 1200px
-  */
-  width: clamp(12.5rem, 9.3039772727rem + 18.9393939394vw, 32.03125rem);
-  height: clamp(12.5rem, 9.3039772727rem + 18.9393939394vw, 32.03125rem);
   position: relative;
   border-radius: 50%;
   background: linear-gradient(180deg, #3F3C37 0%, #191813 100%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media only screen and (min-width: 16.875rem) {
-  .modern-player .player-right .disc {
-    width: clamp(2.5rem, 1.8607954545rem + 3.7878787879vw, 6.40625rem);
-    height: clamp(2.5rem, 1.8607954545rem + 3.7878787879vw, 6.40625rem);
-  }
-}
 @media only screen and (min-width: 48rem) {
   .modern-player .player-right .disc {
     width: clamp(7.5rem, 5.5823863636rem + 11.3636363636vw, 19.21875rem);
@@ -936,8 +967,16 @@ body[data-theme=retro] .player-container {
 }
 
 .modern-player .player-right .disc .needle {
+  display: none;
   height: 100%;
   position: absolute;
+  /*
+    BREAKPOINTS:
+    sm: 425px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+  */
   top: -30%;
   right: -60%;
   transform: rotate(90deg) scale(0.9);
@@ -950,6 +989,11 @@ body[data-theme=retro] .player-container {
   */
 }
 
+@media only screen and (min-width: 26.25rem) {
+  .modern-player .player-right .disc .needle {
+    display: block;
+  }
+}
 @media only screen and (min-width: 62rem) {
   .modern-player .player-right .disc .needle {
     top: -5%;
